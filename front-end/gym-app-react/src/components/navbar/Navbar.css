@@ -1,0 +1,37 @@
+.Nav {
+    height: 58px;
+    width: 98%;
+    background: var(--background-text);
+    border-radius: var(--border-radius-m);
+    border-bottom: 1px solid var(--purple);
+    margin-bottom: 20px;
+    padding-left: 30px;
+    margin-top: 0px;
+    padding-top: 12px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;   
+    animation-name: gradient;
+    animation-duration: 10s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+
+a {
+    text-decoration: none;
+   padding: 8px;
+    color: var(--header-text);
+    border: 1px solid var(--purple);
+    border-radius: 4px;
+}
+
+a:hover {
+    color: var(--purple);
+    background-color: var(--header-text);
+    opacity: .8;
+}
+
+@keyframes gradient {
+    from {background-color: var(--background-lighter)}
+    to {background-color: rgb(81, 81, 247);}
+    
+}

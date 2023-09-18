@@ -1,0 +1,37 @@
+body {
+  margin: 0;
+  font-family: "Poppins",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+:root {
+  --font-family: 'Poppins', 'sans-serif';
+  --font-style: normal;
+  --font-weight: 400;
+  --font-size-small: 14px;
+  --font-size-large: 16px;
+  --light-text: #d4d0d0;
+  --gray-text: #70899e;
+  --header-text: #dbd9d9;
+  --errors-text: #721C24;
+  --color-button: #36608c;
+  --border-radius-s: 4px;
+  --border-radius-m: 6px;
+  --background-error: #F8D7DA;
+  --border-error: 1px solid #F5C6CB;
+  --background-lighter: #2b2b2b;
+  --background-body: #262626;
+  --gap: 20px;
+  --gap-m: 16px;
+  --gap-xs: 5px;
+  --gap-s: 10px;
+  --purple: #a567a9;
+  --purple-light: #da8bf7;
+ 
+}
+
+
+
+
