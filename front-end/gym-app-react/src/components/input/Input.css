@@ -1,0 +1,20 @@
+.Input {
+    border: .5px solid var(--header-text);
+    border-radius: 3px;
+    color: black;
+    width: 96%;
+    flex: 1;
+    padding: 16px;
+    margin-top: 12px;
+    background-color: rgb(127, 127, 245);
+    
+}
+.Input:hover {
+    border: .5px solid var(--purple)
+
+}
+::placeholder {
+    color: black;
+    font-family: var(--font-family);
+    font-size: var(--font-size-large);
+}
