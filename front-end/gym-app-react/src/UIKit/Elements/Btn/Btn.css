@@ -1,12 +1,13 @@
 .Btn {
     border: 1px solid var(--purple);
-    color: var(--light-text);
-    background-color: var(--background-body);
+    color: rgb(127, 127, 245);
+    background-color: whitesmoke;
     border-radius: var(--border-radius-s);
     padding: var(--gap-s);
     min-width: 80px;
     height: 40px;
-    font-size: var(--font-size-small);
+    font-size: var(--font-size-large);
+   font-weight: bold;
     margin: 6px;
 }
 
@@ -14,7 +15,7 @@
 .Btn:hover {
     cursor: pointer;
     opacity: 0.8;
-    font-size: var(--font-size-large);
+    font-size: 18px;
     border-color: var(--gray-text)
 }
 

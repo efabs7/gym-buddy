@@ -7,7 +7,7 @@ export const SearchView = () => {
     <div>
       <ToastContainer theme="light" />
       <Navbar />
-      <p>search here for suggestions..</p>
+
       <Search />
     </div>
   );

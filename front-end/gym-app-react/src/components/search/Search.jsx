@@ -1,11 +1,15 @@
 import "./Search.css";
 import { Icon } from "../icon/Icon";
 import Select from "react-select";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useSpring, animated } from "@react-spring/web";
 import { Grid } from "../../UIKit/Layouts/Grid/Grid";
 import { Input } from "../input/Input";
+import { ListItem } from "../listItem/ListItem";
+import { Line } from "../../UIKit/Layouts/Line/Line";
 import { notifyUserError, notifyUserSuccess } from "../../helpers";
+import { Btn } from "../../UIKit/Elements/Btn/Btn";
+import { Center } from "../../UIKit/Layouts/Center/Center";
 
 export const Search = () => {
   const [selectedType, setSelectedType] = useState(null);
@@ -14,6 +18,8 @@ export const Search = () => {
     useState(null);
   const [searchResults, setSearchResults] = useState([]);
   const [userInput, setUserInput] = useState("");
+
+  const [toggle, setToggle] = useState(false);
 
   const workoutType = [
     { value: "Yoga", label: "Yoga" },
@@ -47,9 +53,42 @@ export const Search = () => {
     loop: false,
   });
 
-  const searchByInstructorName = () => {};
+  const searchByInstructorName = () => {
+    if (userInput) {
+      console.log(userInput);
+      let params = new URLSearchParams();
+      params.append("instructor", userInput.toLowerCase());
+    } else {
+      notifyUserError("Please enter instructor name :)");
+    }
+  };
 
-  const renderUserSearch = (list) => {};
+  const searchWorkouts = () => {
+    console.log("call server");
+  };
+
+  const clearSearch = () => {
+    setSearchResults([]);
+  };
+
+  const renderUserSearch = (list) => {
+    if (list) {
+      return list.map((i) => {
+        return (
+          <li key={i.id}>
+            <ListItem
+              videoTitle={i.title}
+              type={i.type}
+              link={i.link}
+              difficulty={i.difficulty}
+              length={i.length}
+              coachNotes={i.notes}
+            />
+          </li>
+        );
+      });
+    }
+  };
   return (
     <div className="wrapper">
       {" "}
@@ -64,6 +103,19 @@ export const Search = () => {
             <Icon i="sentiment_very_satisfied" />
           </animated.span>{" "}
         </h3>
+        <p>
+          {!toggle
+            ? `Search for a specific instructor:`
+            : `Search all instructors:`}
+          <span>
+            {" "}
+            <Icon
+              i={toggle ? "toggle_on" : "toggle_off"}
+              onClick={() => setToggle(!toggle)}
+              className="toggleIcon"
+            />
+          </span>
+        </p>
       </div>
       <div className="box">
         <h4>Workout Type:</h4>
@@ -95,15 +147,23 @@ export const Search = () => {
           isClearable={true}
         />
       </div>
-      <div className="box">
-        <h4>Optional, preffered instructor...</h4>
-        <Input
-          placeholder="Enter instructor name here..."
-          value={userInput}
-          onChange={setUserInput}
-        />
-      </div>
+      {toggle && (
+        <div className="box">
+          <h4>Optional, preffered instructor...</h4>
+
+          <Input
+            placeholder="Enter instructor name here..."
+            value={userInput}
+            onChange={setUserInput}
+          />
+          <Btn onClick={searchByInstructorName}>Search</Btn>
+        </div>
+      )}
       <Grid>{renderUserSearch(searchResults)}</Grid>
+      <Center>
+        {!searchResults && <Btn onClick={searchWorkouts}>Search..</Btn>}
+        {searchResults && <Btn onClick={clearSearch}>Clear</Btn>}
+      </Center>
     </div>
   );
 };

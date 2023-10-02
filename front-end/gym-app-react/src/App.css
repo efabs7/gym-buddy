@@ -14,3 +14,10 @@
 }
 
 
+::placeholder {
+    color: black;
+    font-family: var(--font-family);
+    font-size: var(--font-size-large);
+}
+
+

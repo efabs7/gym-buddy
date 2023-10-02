@@ -1,8 +1,10 @@
 .Icon {
     font-size: 24px;
-    background-color: rgb(216, 176, 244);
-    border-radius: 50%;
+    background-color: inherit;
+    /* background-color: rgb(216, 176, 244); */
+    border-radius: 40%;
     border-color: white;
+    padding: 4px;
     margin: 8px;
 
 
@@ -12,3 +14,4 @@
     cursor: pointer;
     opacity: 0.8
 }
+
