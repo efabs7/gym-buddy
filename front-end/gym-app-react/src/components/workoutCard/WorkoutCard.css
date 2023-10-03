@@ -1,0 +1,7 @@
+.workoutCard {
+    border: 3px solid var(--purple);
+    border-radius: 3px;
+    background-color: rgb(241, 238, 238);
+    padding: 12px;
+    margin: 8px;
+}
