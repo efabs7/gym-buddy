@@ -7,7 +7,32 @@ import { userContext } from "../context/userContext";
 
 export const HomeView = () => {
   const { avatars, inspirationalPhrases } = useContext(userContext);
-  const [workoutList, setWorkoutList] = useState([]);
+
+  const workoutsTestList = [
+    {
+      id: 1,
+      type: "Swimming",
+      length: "1 hour",
+      focus: "aerobic",
+      instructor: "eva",
+    },
+    {
+      id: 2,
+      type: "Pilates",
+      length: "30 mins",
+      focus: "core",
+      instructor: "nicole",
+    },
+    {
+      id: 3,
+      type: "Yoga",
+      length: "20 mins",
+      focus: "mobility",
+      instructor: "adriene",
+    },
+  ];
+
+  const [workoutList, setWorkoutList] = useState(workoutsTestList);
 
   const getRandom = (list) => {
     const rand = list[(Math.random() * list.length) | 0];
@@ -28,7 +53,7 @@ export const HomeView = () => {
     <div>
       <Navbar />
       <Grid>
-        <DragDropContext onDragEnd={handleOnDragEnd}>
+        {/* <DragDropContext onDragEnd={handleOnDragEnd}>
           <Droppable droppabledId="workouts">
             {(provided) => (
               <ul
@@ -38,7 +63,7 @@ export const HomeView = () => {
               >
                 {workoutList.map((i) => {
                   return (
-                    <Draggable key={i._id} draggableId={i._id} index={i}>
+                    <Draggable key={i.id} draggableId={i.id} index={i}>
                       {(provided) => (
                         <li
                           ref={provided.innerRef}
@@ -65,7 +90,25 @@ export const HomeView = () => {
               </ul>
             )}
           </Droppable>
-        </DragDropContext>
+        </DragDropContext> */}
+        <ul>
+          {workoutList.map((i) => {
+            return (
+              <li>
+                <WorkoutCard
+                  key={i.id}
+                  workoutNumber={i.id}
+                  workoutType={i.type}
+                  length={i.length}
+                  focus={i.focus}
+                  avatar={() => getRandom(avatars)}
+                  inspirationalPhrase={() => getRandom(inspirationalPhrases)}
+                  instructor={i.instructor}
+                />
+              </li>
+            );
+          })}
+        </ul>
       </Grid>
     </div>
   );

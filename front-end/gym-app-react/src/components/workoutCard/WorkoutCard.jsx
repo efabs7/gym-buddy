@@ -12,7 +12,7 @@ export const WorkoutCard = ({
   inspirationalPhrase,
   instructor,
 }) => {
-  styles = {
+  const styles = {
     fontStyle: "italic",
   };
 
@@ -26,7 +26,7 @@ export const WorkoutCard = ({
       <Center>
         <Rows>
           <p>{focus}</p>
-          <img src={avatar} />
+          <img src={avatar} alt="avatar for user" />
           <p style={styles}>{inspirationalPhrase}</p>
           <p>{instructor}</p>
         </Rows>

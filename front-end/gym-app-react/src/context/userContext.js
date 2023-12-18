@@ -13,8 +13,16 @@ export const UserProvider = ({ children }) => {
   ];
 
   const inspirationalPhrases = [
-    { category: "funny", phrase: "stay with it or else" },
-    { category: "funny", phrase: "drink coffee first lol" },
+    {
+      category: "funny",
+      phrase:
+        "honestly, even if you don't feel it today, you look good and you smell nice and you might as well give your body a little treat! Get after it!",
+    },
+    {
+      category: "funny",
+      phrase:
+        "drink some coffee then try again if you need; otherwise, let's get into it!",
+    },
     {
       category: "serious",
       phrase: "discipline is hard won- but hard lost too! Stay with it.",
@@ -23,6 +31,11 @@ export const UserProvider = ({ children }) => {
       category: "serious",
       phrase:
         "Just a bit of dedication to yourself each day makes a real difference. Get after it!",
+    },
+    {
+      category: "serious",
+      phrase:
+        "discipline is the bridge between your goals and your achievements- so get your butt in gear and get moving!",
     },
   ];
   const value = {

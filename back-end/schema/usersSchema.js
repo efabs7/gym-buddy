@@ -2,8 +2,7 @@ const schema = {
   type: "object",
   properties: {
     name: { type: "string" },
-    lastName: { type: "string" },
-    phone: { type: "string" },
+    nickname: { type: "string", maxLength: 30, minLength: 1 },
     password: { type: "string", maxLength: 30, minLength: 5 },
     bio: { type: "string" },
   },
@@ -15,8 +14,7 @@ const schemaUpdate = {
   type: "object",
   properties: {
     name: { type: "string" },
-    lastName: { type: "string" },
-    phone: { type: "string" },
+    nickname: { type: "string", maxLength: 30, minLength: 1 },
     password: { type: "string", maxLength: 30, minLength: 5 },
     bio: { type: "string" },
   },

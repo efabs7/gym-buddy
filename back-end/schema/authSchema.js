@@ -1,10 +1,10 @@
 const schema = {
   type: "object",
   properties: {
-    email: { type: "string", format: "email" },
+    nickname: { type: "string", maxLength: 30, minLength: 1 },
     password: { type: "string", maxLength: 30, minLength: 5 },
   },
-  required: ["email", "password"],
+  required: ["nickname", "password"],
   additionalProperties: false,
 };
 

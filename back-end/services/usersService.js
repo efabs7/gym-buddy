@@ -13,14 +13,14 @@ const getUserByIdService = async (id) => {
   return user;
 };
 
-const findUserByEmailService = async (email) => {
-  const user = await db.users.findOne({ email: email });
+const findUserByNicknameService = async (nickname) => {
+  const user = await db.users.findOne({ nickname: nickname });
   return user;
 };
 
-const findIsUserByEmailService = async (email, userId) => {
+const findIsUserByNicknameService = async (nickname, userId) => {
   const user = await db.users.findOne({
-    email: email,
+    nickname: nickname,
     _id: {
       $ne: new ObjectId(userId),
     },
@@ -53,8 +53,8 @@ const addUserService = async (user, hash) => {
 module.exports = {
   getAllUsersService,
   getUserByIdService,
-  findUserByEmailService,
-  findIsUserByEmailService,
+  findUserByNicknameService,
+  findIsUserByNicknameService,
   addUserService,
   updateUserService,
 };

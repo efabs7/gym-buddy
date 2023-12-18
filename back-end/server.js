@@ -37,7 +37,7 @@ app.use(async (req, res, next) => {
   req.user = user;
   console.log(user);
 
-  if (user.name === "hermione" && user.email === "hermione@hermione.com") {
+  if (user.name === "hermione" && user.nickname === "greatestWitchEver") {
     const permissionId = 1;
     res.status(200).send({ permissions: permissionId });
   } else {

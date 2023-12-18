@@ -18,6 +18,7 @@ export const Search = () => {
     useState(null);
   const [searchResults, setSearchResults] = useState([]);
   const [userInput, setUserInput] = useState("");
+  const [userIsSearching, setUserIsSearching] = useState(true);
 
   const [toggle, setToggle] = useState(false);
 
@@ -28,12 +29,14 @@ export const Search = () => {
     { value: "Morning Flow", label: "Morning Flow" },
     { value: "Kickass Yoga Pilates", label: "Kickass Yoga Pilates" },
     { value: "Rehab", label: "Rehab" },
+    { value: "Swimming", label: "Swimming" },
   ];
 
   const workoutLength = [
     { value: "10 mins", label: "10 mins" },
     { value: "20 mins", label: "20 mins" },
     { value: "30 mins", label: "30 mins" },
+    { value: "1 hour", label: "1 hour" },
   ];
 
   const preferredCurator = [
@@ -65,10 +68,12 @@ export const Search = () => {
 
   const searchWorkouts = () => {
     console.log("call server");
+    setUserIsSearching(!userIsSearching);
   };
 
   const clearSearch = () => {
     setSearchResults([]);
+    setUserIsSearching(!userIsSearching);
   };
 
   const renderUserSearch = (list) => {
@@ -161,8 +166,8 @@ export const Search = () => {
       )}
       <Grid>{renderUserSearch(searchResults)}</Grid>
       <Center>
-        {!searchResults && <Btn onClick={searchWorkouts}>Search..</Btn>}
-        {searchResults && <Btn onClick={clearSearch}>Clear</Btn>}
+        {userIsSearching && <Btn onClick={searchWorkouts}>Search..</Btn>}
+        {!userIsSearching && <Btn onClick={clearSearch}>Clear</Btn>}
       </Center>
     </div>
   );
