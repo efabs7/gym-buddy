@@ -32,19 +32,39 @@ export const HomeView = () => {
     },
   ];
 
-  const [workoutList, setWorkoutList] = useState(workoutsTestList);
+  const [workoutList, setWorkoutList] = useState([]);
+
+  useEffect(() => {
+    setWorkoutList(workoutsTestList);
+  }, []);
 
   const getRandom = (list) => {
     const rand = list[(Math.random() * list.length) | 0];
     return rand;
   };
+
+  const reorder = (list, startIndex, endIndex) => {
+    const result = Array.from(list);
+    const [removed] = result.splice(startIndex, 1);
+    result.splice(endIndex, 0, removed);
+
+    return result;
+  };
+
   function handleOnDragEnd(result) {
     if (!result.destination) {
       return;
     }
-    const items = [...workoutList];
-    const [reorderedItem] = items.splice(result.source.index, 1);
-    items.splice(result.destination.index, 0, reorderedItem);
+    // const items = [...workoutList];
+    // const [reorderedItem] = items.splice(result.source.index, 1);
+    // items.splice(result.destination.index, 0, reorderedItem);
+    const newList = [...workoutList];
+
+    const items = reorder(
+      newList,
+      result.source.index,
+      result.destination.inext
+    );
 
     setWorkoutList(items);
   }
@@ -53,25 +73,27 @@ export const HomeView = () => {
     <div>
       <Navbar />
       <Grid>
-        {/* <DragDropContext onDragEnd={handleOnDragEnd}>
-          <Droppable droppabledId="workouts">
+        <DragDropContext onDragEnd={handleOnDragEnd}>
+          <Droppable droppableId="droppable" direction="horizontal">
             {(provided) => (
-              <ul
-                className="workouts"
+              <div
                 {...provided.droppableProps}
                 ref={provided.innerRef}
+                className="workouts"
               >
-                {workoutList.map((i) => {
+                {workoutList.map((i, index) => {
                   return (
-                    <Draggable key={i.id} draggableId={i.id} index={i}>
+                    <Draggable key={i.id} draggableId={i.id} index={index}>
                       {(provided) => (
-                        <li
+                        <div
                           ref={provided.innerRef}
                           {...provided.draggableProps}
                           {...provided.dragHandleProps}
                         >
+                          {/* <li>{i.type} </li> */}
+
                           <WorkoutCard
-                            workoutNumber={i}
+                            workoutNumber={i.id}
                             workoutType={i.type}
                             length={i.length}
                             focus={i.focus}
@@ -81,17 +103,17 @@ export const HomeView = () => {
                             }
                             instructor={i.instructor}
                           />
-                        </li>
+                        </div>
                       )}
                     </Draggable>
                   );
                 })}
                 {provided.placeholder}
-              </ul>
+              </div>
             )}
           </Droppable>
-        </DragDropContext> */}
-        <ul>
+        </DragDropContext>
+        {/* <ul>
           {workoutList.map((i) => {
             return (
               <li>
@@ -108,7 +130,7 @@ export const HomeView = () => {
               </li>
             );
           })}
-        </ul>
+        </ul> */}
       </Grid>
     </div>
   );

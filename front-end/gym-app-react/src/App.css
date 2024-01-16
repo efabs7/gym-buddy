@@ -20,4 +20,16 @@
     font-size: var(--font-size-large);
 }
 
+.workouts {
+  background-color: var(--background-body);
+}
+
+#workouts {
+  background-color: var(--background-lighter);
+  color: white;
+}
+
+.workouts:active{
+  background-color: var(--purple-light);
+}
 
